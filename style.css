@@ -1,0 +1,585 @@
+/* ==========================================================================
+   Instant Growth Digital Agency - Luxury Dark Theme
+   Matched to instantgrowthdigitalagency.com
+   Palette: Deep Charcoal Obsidian, Amber Grid, Electric Lime & Mint Glow
+   ========================================================================== */
+
+:root {
+  --bg-dark: #07080b;
+  --card-bg: rgba(14, 17, 24, 0.82);
+  --card-border: rgba(255, 255, 255, 0.08);
+
+  /* Instant Growth Brand Palette */
+  --ig-lime: #c6f135;       /* "Start a project" Electric Volt Lime */
+  --ig-lime-dark: #b0db26;
+  --ig-lime-glow: rgba(198, 241, 53, 0.38);
+  --ig-amber: #f59e0b;      /* Golden Amber Grid & Accent */
+  --ig-mint: #2dd4bf;       /* Gradient Text Mint */
+  
+  --ig-gradient: linear-gradient(135deg, #ffffff 25%, #2dd4bf 65%, #c6f135 100%);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --input-bg: rgba(9, 12, 17, 0.9);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-focus: #c6f135;
+  --error-color: #ff4d4f;
+  
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: 24px 16px;
+}
+
+/* ==========================================
+   🌌 MATHS BOXES SCROLLING GRID & AMBIENT GLOWS
+   Continuous Infinite Diagonal Drift
+   ========================================== */
+.bg-grid {
+  position: fixed;
+  inset: -100px;
+  background-image: 
+    linear-gradient(rgba(245, 158, 11, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.09) 1px, transparent 1px);
+  background-size: 38px 38px; /* Maths Graph Paper Grid */
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.98) 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.98) 25%, transparent 85%);
+  z-index: 0;
+  pointer-events: none;
+  animation: mathGridScroll 18s linear infinite;
+  will-change: transform;
+}
+
+@keyframes mathGridScroll {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(38px, 38px); }
+}
+
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+  will-change: transform;
+}
+
+/* Electric Lime Glow Orb */
+.glow-cyan,
+.glow-lime {
+  top: -100px;
+  left: -80px;
+  width: 440px;
+  height: 440px;
+  background: var(--ig-lime);
+  opacity: 0.22;
+  animation: floatOrbLime 18s ease-in-out infinite alternate;
+}
+
+/* Warm Golden Amber Glow Orb */
+.glow-pink,
+.glow-amber {
+  bottom: -120px;
+  right: -90px;
+  width: 420px;
+  height: 420px;
+  background: var(--ig-amber);
+  opacity: 0.25;
+  animation: floatOrbAmber 20s ease-in-out infinite alternate;
+}
+
+/* Mint Tech Center Glow */
+.glow-violet,
+.glow-mint {
+  top: 45%;
+  left: 50%;
+  width: 380px;
+  height: 380px;
+  background: var(--ig-mint);
+  opacity: 0.16;
+  animation: floatOrbMint 24s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrbLime {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(75px, 60px) scale(1.15); }
+  100% { transform: translate(30px, 100px) scale(0.92); }
+}
+
+@keyframes floatOrbAmber {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, -70px) scale(1.18); }
+  100% { transform: translate(-30px, -110px) scale(0.95); }
+}
+
+@keyframes floatOrbMint {
+  0% { transform: translate(-50%, -50%) scale(0.9); }
+  50% { transform: translate(-42%, -40%) scale(1.22); }
+  100% { transform: translate(-58%, -56%) scale(1.04); }
+}
+
+/* ==========================================
+   📦 WRAPPER & GLASS CARD
+   ========================================== */
+/* ==========================================
+   📦 WRAPPER & GLASS CARD (COMPACT 30% SHRINK)
+   ========================================== */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 410px;
+  margin: auto;
+}
+
+.card-container {
+  background: var(--card-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 
+    0 24px 50px -10px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(245, 158, 11, 0.06),
+    0 0 35px -8px rgba(198, 241, 53, 0.08);
+  position: relative;
+}
+
+/* ==========================================
+   🏷️ BRAND HEADER & BADGE (30% SHRUNK)
+   ========================================== */
+.form-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.badge-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(198, 241, 53, 0.08);
+  border: 1px solid rgba(198, 241, 53, 0.28);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--ig-lime);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--ig-lime);
+  animation: pulseAnim 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseAnim {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+.badge-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ig-lime);
+}
+
+.portal-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  margin-bottom: 4px;
+}
+
+.gradient-text {
+  background: var(--ig-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 30% Instruction Text Shrink */
+.portal-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+/* ==========================================
+   📝 FORM INPUTS & DROPDOWNS (30% COMPACT)
+   ========================================== */
+.field-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label above placeholder kept readable as requested */
+.field-group label {
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+}
+
+/* Icons shrunk by 30% */
+.field-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--ig-lime);
+  opacity: 0.95;
+}
+
+.input-wrapper,
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="tel"],
+select {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-main);
+  padding: 9px 12px;
+  font-size: 0.84rem;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 9px;
+  outline: none;
+  transition: all 0.22s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+input::placeholder {
+  color: #475569;
+  font-weight: 400;
+  font-size: 0.82rem;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 2.5px rgba(198, 241, 53, 0.16), inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  background: rgba(13, 17, 26, 0.96);
+}
+
+/* Custom Select Dropdown Arrow */
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--text-muted);
+  border-bottom: 2px solid var(--text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 36px;
+}
+
+select option {
+  background-color: #0d1017;
+  color: #f1f5f9;
+  padding: 8px;
+  font-size: 0.84rem;
+}
+
+/* Dynamic Container Animation */
+.dynamic-container {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  border-left: 2px solid var(--ig-lime);
+  padding-left: 10px;
+  margin-left: 2px;
+  margin-top: 3px;
+}
+
+/* Error States */
+.has-error input,
+.has-error select {
+  border-color: var(--error-color) !important;
+  background: rgba(255, 77, 79, 0.06) !important;
+}
+
+.error-msg {
+  display: none;
+  font-size: 0.70rem;
+  color: var(--error-color);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.has-error .error-msg {
+  display: block;
+}
+
+/* ==========================================
+   🟢 VIBRANT WHATSAPP GREEN CTA BUTTON (30% SHRUNK)
+   ========================================== */
+.action-wrapper {
+  margin-top: 18px;
+}
+
+.submit-button {
+  width: 100%;
+  background: linear-gradient(135deg, #25D366 0%, #159e4b 100%);
+  color: #ffffff;
+  border: none;
+  padding: 11px 16px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-family: inherit;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.submit-button:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 28px -4px rgba(37, 211, 102, 0.65);
+  background: linear-gradient(135deg, #2ae772 0%, #17b355 100%);
+}
+
+.submit-button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.wa-icon {
+  width: 17px;
+  height: 17px;
+  color: #ffffff;
+}
+
+/* Loader */
+.btn-loader {
+  display: none;
+  width: 17px;
+  height: 17px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.is-submitting .btn-loader {
+  display: inline-block;
+}
+
+.is-submitting .btn-content {
+  display: none;
+}
+
+.is-submitting {
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+/* ==========================================
+   🛡️ HIGH-IQ FALLBACK CARD (HIDDEN BY DEFAULT!)
+   Only appears after user clicks Confirm Order button
+   ========================================== */
+.fallback-card {
+  display: none; /* Hidden until confirm button is pressed! */
+  margin-top: 14px;
+  background: rgba(10, 14, 22, 0.72);
+  border: 1px dashed rgba(245, 158, 11, 0.3);
+  border-radius: 10px;
+  padding: 11px 13px;
+  transition: all 0.35s ease;
+}
+
+.fallback-card.show-fallback {
+  display: block;
+  animation: fadeInDown 0.4s ease-out;
+}
+
+.fallback-card.highlight-fallback {
+  display: block;
+  border-color: #c6f135;
+  box-shadow: 0 0 20px rgba(198, 241, 53, 0.28);
+  animation: gentleShake 0.6s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gentleShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+.fallback-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.fallback-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.fallback-text {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.fallback-action-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(18, 22, 33, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 10px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+.phone-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #f8fafc;
+  font-weight: 700;
+  font-size: 0.84rem;
+  letter-spacing: 0.4px;
+}
+
+.phone-icon {
+  width: 14px;
+  height: 14px;
+  color: #25D366;
+}
+
+.copy-btn {
+  background: rgba(198, 241, 53, 0.12);
+  border: 1px solid rgba(198, 241, 53, 0.35);
+  color: #c6f135;
+  padding: 5px 11px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #c6f135;
+  color: #080a03;
+  transform: translateY(-1px);
+}
+
+.copy-btn.copied {
+  background: #25D366;
+  color: #ffffff;
+  border-color: #25D366;
+}
+
+.copy-icon {
+  width: 12px;
+  height: 12px;
+}
+
+/* Security Note */
+.security-note {
+  text-align: center;
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px;
+    align-items: flex-start;
+  }
+  
+  .card-container {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .portal-title {
+    font-size: 1.55rem;
+  }
+  
+  .submit-button {
+    font-size: 0.94rem;
+    padding: 15px 16px;
+  }
+}
